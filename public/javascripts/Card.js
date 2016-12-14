@@ -2,7 +2,7 @@ Card = function(number, suit) {
   this.number = number;
   this.suit = suit;
   this.flipped = true;
-  
+  this.matched = false;
 }
 
 Card.width = 100;

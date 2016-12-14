@@ -3,9 +3,15 @@ extends layout
 block content
   div.container
     div.left-sidebar
-      div.flip-count Flips: 0
+      div.player-match-count Your Matches: 
+        span 0
+      div.computer-match-count Computer Matches: 
+        span 0
+      div.turn
     div.cards
     div.right-sidebar
       div.matched-cards
+        div.player-matched-cards
+        div.computer-matched-cards
 block scripts
   script(src="./javascripts/memory-game.js")

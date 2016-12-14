@@ -15,10 +15,6 @@ a {
   margin-right: auto;
 }
 
-.matched-cards {
-  user-select: none;
-}
-
 .card {
   user-drag: none; 
   user-select: none;
@@ -39,11 +35,28 @@ a {
     justify-content: center;
 }
 .left-sidebar {
-  width: 150px;
+  width: 175px;
   padding-top: 15px;
 }
 .right-sidebar {
   width: 200px;
+}
+
+.matched-cards {
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 560px;
+  user-select: none;
+}
+
+.player-matched-cards {
+  min-width: 230px;
+}
+
+.computer-matched-cards {
+  min-width: 230px;
 }
 
 .matched-card-pair {
