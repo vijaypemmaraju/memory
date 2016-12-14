@@ -1,8 +1,11 @@
 extends layout
 
 block content
-  div.flip-count Flips: 0
-  div.cards
-  div.matched-cards
+  div.container
+    div.left-sidebar
+      div.flip-count Flips: 0
+    div.cards
+    div.right-sidebar
+      div.matched-cards
 block scripts
   script(src="./javascripts/memory-game.js")

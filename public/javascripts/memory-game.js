@@ -38,7 +38,7 @@ $(document).on('click', '.cards .card', function() {
               flippedCard.getElement().replaceWith(Card.getBlankSpace());
               $matchedCardPair.append(flippedCard.getHtml());
             })
-            $('.matched-cards').prepend($matchedCardPair);
+            $('.matched-cards').append($matchedCardPair);
             flippedCards  = [];
           }, 50);
         } else {

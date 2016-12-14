@@ -15,11 +15,7 @@ a {
 }
 
 .matched-cards {
-  margin-top: 12px;
-  width: 650px;
   user-select: none;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .card {
@@ -36,3 +32,18 @@ a {
   width:50px;
   height:73px;
 } 
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+.left-sidebar {
+  min-width: 150px;
+}
+.right-sidebar {
+  width: 200px;
+}
+
+.matched-card-pair {
+  height: 20px;
+}
