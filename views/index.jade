@@ -7,6 +7,13 @@ block content
         span 0
       div.computer-match-count Computer Matches: 
         span 0
+      span.label Difficulty
+      select.computer-difficulty
+        - for (var val = 1; val <= 10; val++)
+            if val == 5
+              option(selected)=val
+            else
+              option=val
       div.turn
     div.cards
     div.right-sidebar

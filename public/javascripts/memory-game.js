@@ -10,6 +10,10 @@ var gameState = {
 var player = new Player('player');
 var computer = new Player('computer');
 computer.knownCards = [];
+computer.difficulty = 5;
+$('.computer-difficulty').change(function() {
+  computer.difficulty = parseInt($(this).val());
+})
 for (var i = 0; i < 14; i++) {
   computer.knownCards.push([])
 }
@@ -36,7 +40,7 @@ computer.makeMoves = function() {
     return !card.matched
   });
 
-  if (matches.length >= 2) {
+  if (matches.length >= 2 && Math.random() < 0.1 * computer.difficulty) {
     firstMatchableCardIndex = unmatchedCards.indexOf(matches[0]);
     secondMatchableCardIndex = unmatchedCards.indexOf(matches[1]);
   }
