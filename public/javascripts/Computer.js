@@ -21,8 +21,8 @@ computer.makeMoves = function() {
     }
   }
   var matches = computer.knownCards
-    .filter(function(a){return a.length >= 2})
-    .reduce(function(a,b) {return a.concat(b)}, []);
+  .filter(function(a){return a.length >= 2})
+  .reduce(function(a,b) {return a.concat(b)}, []);
 
   var firstMatchableCardIndex, secondMatchableCardIndex;
 
@@ -52,7 +52,7 @@ computer.makeMoves = function() {
     setTimeout(function() {
       var secondChosenCardIndex;
       do {
-       secondChosenCardIndex = secondMatchableCardIndex || Math.floor(Math.random() * unmatchedCards.length);
+        secondChosenCardIndex = secondMatchableCardIndex || Math.floor(Math.random() * unmatchedCards.length);
       } while (secondChosenCardIndex == firstChosenCardIndex);
       var secondCardLocation = cards.indexOf(unmatchedCards[secondChosenCardIndex]);
       var secondCard = cards[secondCardLocation];

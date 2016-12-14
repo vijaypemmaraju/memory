@@ -13,22 +13,22 @@ Card.prototype.getHtml = function(){
 } 
 
 Card.prototype.getRawNumber = function() {
-	switch(this.number) {
-		case "ace":
-			return 0;
-			break;
-		case "jack":
-			return 10;
-			break;
-		case "queen":
-			return 11;
-			break;
-		case "king":
-			return 12;
-			break;
-		default:
-			return this.number - 1;
-	}
+  switch(this.number) {
+    case "ace":
+      return 0;
+      break;
+    case "jack":
+      return 10;
+      break;
+    case "queen":
+      return 11;
+      break;
+    case "king":
+      return 12;
+      break;
+    default:
+      return this.number - 1;
+  }
 }
 
 Card.prototype.getFullName = function() {
