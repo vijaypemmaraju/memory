@@ -23,6 +23,9 @@ $(document).ready(function() {
 $(document).on('click', '.cards .card', function() {
   if (hasControl) {
     var selected = cards[$(this).index()];
+    if (selected.flipped && flippedCards.length == 1) {
+      return;
+    }
     selected.flipped = !selected.flipped;
     if (selected.flipped) {
       flipCount++;
