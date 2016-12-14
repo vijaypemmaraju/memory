@@ -9,21 +9,65 @@ var gameState = {
 };
 var player = new Player('player');
 var computer = new Player('computer');
+computer.knownCards = [];
+for (var i = 0; i < 14; i++) {
+  computer.knownCards.push([])
+}
+computer.addKnownCard = function(card) {
+  if (computer.knownCards[card.getRawNumber()].indexOf(card) == -1) {
+    computer.knownCards[card.getRawNumber()].push(card);
+  }
+}
 computer.makeMoves = function() {
+  for (var i = 0; i < 14; i++) {
+    for (var j = computer.knownCards[i].length - 1; j >= 0; j--) {
+      if (computer.knownCards[i][j].matched) {
+        computer.knownCards[i].splice(j, 1);
+      }
+    }
+  }
+  var matches = computer.knownCards
+    .filter(function(a){return a.length >= 2})
+    .reduce(function(a,b) {return a.concat(b)}, []);
+
+  var firstMatchableCardIndex, secondMatchableCardIndex;
+
   var unmatchedCards = cards.filter(function(card) {
     return !card.matched
   });
+
+  if (matches.length >= 2) {
+    firstMatchableCardIndex = unmatchedCards.indexOf(matches[0]);
+    secondMatchableCardIndex = unmatchedCards.indexOf(matches[1]);
+  }
+
+  if (unmatchedCards.length == 2) {
+    firstMatchableCardIndex = 0;
+    secondMatchableCardIndex = 1;
+  }
+
+
   setTimeout(function() {
-    var firstChosenCardIndex = Math.floor(Math.random() * unmatchedCards.length);
+    var firstChosenCardIndex = firstMatchableCardIndex || Math.floor(Math.random() * unmatchedCards.length);
     console.log("first:" + firstChosenCardIndex);
-    $(cards[cards.indexOf(unmatchedCards[firstChosenCardIndex])].getElement()).click();
+    var firstCardLocation = cards.indexOf(unmatchedCards[firstChosenCardIndex]);
+    var firstCard = cards[firstCardLocation];
+
+    computer.addKnownCard(firstCard);
+
+    $(firstCard.getElement()).click();
     setTimeout(function() {
       var secondChosenCardIndex;
       do {
-       secondChosenCardIndex = Math.floor(Math.random() * unmatchedCards.length);
+       secondChosenCardIndex = secondMatchableCardIndex || Math.floor(Math.random() * unmatchedCards.length);
       console.log("second:" + secondChosenCardIndex);
       } while (secondChosenCardIndex == firstChosenCardIndex);
-      $(cards[cards.indexOf(unmatchedCards[secondChosenCardIndex])].getElement()).click();
+      var secondCardLocation = cards.indexOf(unmatchedCards[secondChosenCardIndex]);
+      var secondCard = cards[secondCardLocation];
+
+      computer.addKnownCard(secondCard);
+
+      $(secondCard.getElement()).click();
     }, 500);
   }, 500);
 }
@@ -87,9 +131,9 @@ $(document).on('click', '.cards .card', function(e) {
           setTimeout(function() {
             currentPlayer.hasControl = true;
             var $matchedCardPair = $('<div class="matched-card-pair"></div>');
+            currentPlayer.matchCount++;
             flippedCards.forEach(function(flippedCard) {
               flippedCard.matched = true;
-              currentPlayer.matchCount++;
               flippedCard.getElement().replaceWith(Card.getBlankSpace());
               $matchedCardPair.append(flippedCard.getHtml());
             })
@@ -98,6 +142,7 @@ $(document).on('click', '.cards .card', function(e) {
               computer.makeMoves();
             }
             flippedCards = [];
+            renderSidebar();
           }, 50);
         } else {
           currentPlayer.hasControl = false;
@@ -106,6 +151,7 @@ $(document).on('click', '.cards .card', function(e) {
             flippedCards.forEach(function(flippedCard) {
               flippedCard.flipped = !flippedCard.flipped;
               flippedCard.getElement().replaceWith(flippedCard.getHtml())
+              computer.addKnownCard(flippedCard);
             })
             flippedCards = [];
             changeTurns();
