@@ -2,10 +2,14 @@ Card = function(number, suit) {
   this.number = number;
   this.suit = suit;
   this.flipped = false;
+  
 }
 
+Card.width = 100;
+Card.height = 146;
+
 Card.prototype.getHtml = function(){
-  return '<img class="card" card = "' + this.getFullName() + '" src="images/cards/' + (this.flipped ? (this.getFullName()) : 'card_back') +'.png" width="50" height ="73"/>'
+  return '<img class="card" card = "' + this.getFullName() + '" src="images/cards/' + (this.flipped ? (this.getFullName()) : 'card_back') +'.png" width="'+ Card.width + '" height ="' + Card.height + '"/>'
 } 
 
 Card.prototype.getFullName = function() {
@@ -17,5 +21,5 @@ Card.prototype.getElement = function() {
 }
 
 Card.getBlankSpace = function() {
-  return '<span class="empty" />';
+  return '<span style="width: '+ Card.width + 'px; height: '+ Card.height + 'px; display: inline-block" />'; 
 }
