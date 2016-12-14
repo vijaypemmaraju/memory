@@ -11,6 +11,15 @@ cardFiles.forEach(function(cardFile) {
   console.log(result);
 });
 var hasControl = true;
+
+$(document).ready(function() {
+  cards.forEach(function(card) {
+    card.flipped = !card.flipped;
+    card.redraw();
+  });
+});
+
+
 $(document).on('click', '.card', function() {
   if (hasControl) {
     var selected = cards[$(this).index()];

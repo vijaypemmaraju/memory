@@ -1,7 +1,7 @@
 Card = function(number, suit) {
   this.number = number;
   this.suit = suit;
-  this.flipped = false;
+  this.flipped = true;
   
 }
 
@@ -18,6 +18,10 @@ Card.prototype.getFullName = function() {
 
 Card.prototype.getElement = function() {
   return $("[card="+this.getFullName()+"]");
+}
+
+Card.prototype.redraw = function() {
+  this.getElement().replaceWith(this.getHtml());
 }
 
 Card.getBlankSpace = function() {
