@@ -6,3 +6,23 @@ body {
 a {
   color: #00B7FF;
 }
+
+.cards {
+  width: 650px;
+  user-select: none; 
+}
+
+.card {
+ user-drag: none; 
+ user-select: none;
+ -moz-user-select: none;
+ -webkit-user-drag: none;
+ -webkit-user-select: none;
+ -ms-user-select: none;
+}
+
+.empty {
+  display: inline-block;
+  width:50px;
+  height:73px;
+}
