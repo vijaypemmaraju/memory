@@ -20,7 +20,7 @@ $(document).ready(function() {
 });
 
 
-$(document).on('click', '.card', function() {
+$(document).on('click', '.cards .card', function() {
   if (hasControl) {
     var selected = cards[$(this).index()];
     selected.flipped = !selected.flipped;
