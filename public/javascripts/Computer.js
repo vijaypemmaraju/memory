@@ -96,7 +96,7 @@ computer.makeMoves = function() {
     setTimeout(function() {
       // Remove first card we chose so we don't choose it again
       if (unmatchedCards.length > 2) {
-      unmatchedCards.splice(firstChosenCardIndex, 1);
+        unmatchedCards.splice(firstChosenCardIndex, 1);
       }
 
       // Recalculate matches after flipping the first card.
