@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font-family: 'Open Sans', sans-serif;
+  background: #eee;
   font-size: 20px;
 }
 
@@ -22,6 +23,11 @@ a {
   -ms-user-select: none;
 }
 
+.status {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
 .empty {
   display: inline-block;
   width:50px;
@@ -34,7 +40,7 @@ a {
 }
 .left-sidebar {
   width: 250px;
-  padding-top: 15px;
+  align-self: center;
 }
 
 .right-sidebar {
@@ -52,13 +58,17 @@ a {
 
 .player-matched-cards, .computer-matched-cards {
   min-width: 150px;
+  text-align: center;
 }
 
+.match-title {
+  margin-bottom: 8px;
+}
 
 .matched-card-pair {
   height: 20px;
 }
 
 .computer-difficulty {
-    margin-left: 8px;
+  margin-left: 8px;
 }

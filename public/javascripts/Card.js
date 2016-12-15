@@ -5,8 +5,8 @@ Card = function(number, suit) {
   this.matched = false;
 }
 
-Card.width = 75;
-Card.height = 110;
+Card.width = 60;
+Card.height = 88;
 
 Card.prototype.getHtml = function(){
   return '<img class="card" card = "' + this.getFullName() + '" src="images/cards/' + (this.flipped ? (this.getFullName()) : 'card_back') +'.png" width="'+ Card.width + '" height ="' + Card.height + '"/>'

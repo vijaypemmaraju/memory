@@ -1,6 +1,7 @@
 extends layout
 
 block content
+
   div.container
     div.left-sidebar
       div.player-match-count Your Matches: 
@@ -14,9 +15,12 @@ block content
               option(selected)=val
             else
               option=val
+    div.content
       div.status
-    div.cards
+      div.cards
     div.player-matched-cards
+      div.match-title Player's Matches
     div.computer-matched-cards
+      div.match-title Computer's Matches
 block scripts
   script(src="./javascripts/memory-game.js")
