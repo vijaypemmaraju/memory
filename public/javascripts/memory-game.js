@@ -72,7 +72,7 @@ $(document).on('click', '.cards .card', function(e) {
   if (isCurrentPlayer(e)) {
     var selected = cards[$(this).index()];
 
-
+    // Ignore a card that's already flipped
     if (selected.flipped) {
       return;
     }
@@ -80,18 +80,25 @@ $(document).on('click', '.cards .card', function(e) {
     selected.flipped = true;
 
     flippedCards.push(selected);
+
+
     if (flippedCards.length >= 2) {
       if (flippedCards[0].number === flippedCards[1].number) {
         currentPlayer.hasControl = false;
         setTimeout(function() {
+
           currentPlayer.hasControl = true;
+
+          // Create an element to put into the corresponding right sidebars
           var $matchedCardPair = $('<div class="matched-card-pair"></div>');
           currentPlayer.matchCount++;
+
           flippedCards.forEach(function(flippedCard) {
             flippedCard.matched = true;
             flippedCard.getElement().replaceWith(Card.getBlankSpace());
             $matchedCardPair.append(flippedCard.getHtml());
           })
+          
           $('.' + currentPlayer.name + '-matched-cards').append($matchedCardPair);
           if (currentPlayer === computer && !isGameOver()) {
             computer.makeMoves();
