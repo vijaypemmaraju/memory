@@ -9,7 +9,7 @@ Card.width = 60;
 Card.height = 88;
 
 Card.prototype.getHtml = function(){
-  return '<img class="card" card = "' + this.getFullName() + '" src="images/cards/' + (this.flipped ? (this.getFullName()) : 'card_back') +'.png" width="'+ Card.width + '" height ="' + Card.height + '"/>'
+  return '<img class="card" card = "' + this.getFullName() + '" src="images/cards/small/' + (this.flipped ? (this.getFullName()) : 'card_back') +'.jpg" width="'+ Card.width + '" height ="' + Card.height + '"/>'
 } 
 
 Card.prototype.getRawNumber = function() {
