@@ -10,11 +10,14 @@ var player = new Player('player');
 
 var currentPlayer = player;
 
+$('.cards').css("width", Card.width*13);
+
 $(document).ready(function() {
   cards.forEach(function(card) {
     card.flipped = !card.flipped;
     card.redraw();
   });
+
   renderSidebar();
 });
 

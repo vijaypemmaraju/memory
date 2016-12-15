@@ -83,7 +83,6 @@ computer.makeMoves = function() {
     secondMatchableCardIndex = 1;
   }
 
-
   setTimeout(function() {
     // Choose the matched card if present, otherwise choose randomly.
     var firstChosenCardIndex = firstMatchableCardIndex !== undefined ? firstMatchableCardIndex : Math.floor(Math.random() * unmatchedCards.length);
@@ -103,10 +102,11 @@ computer.makeMoves = function() {
       // Recalculate matches after flipping the first card.
       matches = computer.findMatches();
       if (computer.hasMatch(matches)) {
-        if (firstCard === matches[0]) {
-          secondMatchableCardIndex = unmatchedCards.indexOf(matches[1]);
-        } else {
-          secondMatchableCardIndex = unmatchedCards.indexOf(matches[0]);
+        for (var i = 0; i < matches.length; i++) {
+          if (firstCard !== matches[i]) {  
+            secondMatchableCardIndex = unmatchedCards.indexOf(matches[i]);
+            break;
+          }
         }
       }
       

@@ -1,7 +1,7 @@
 body {
   padding: 50px;
   font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 a {
@@ -11,8 +11,6 @@ a {
 .cards {
   width: 1300px;
   user-select: none;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .card {
@@ -31,15 +29,16 @@ a {
 } 
 
 .container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: space-between;
 }
 .left-sidebar {
-  width: 175px;
+  width: 250px;
   padding-top: 15px;
 }
+
 .right-sidebar {
-  width: 200px;
+  width: 250px;
 }
 
 .matched-cards {
@@ -51,14 +50,15 @@ a {
   user-select: none;
 }
 
-.player-matched-cards {
-  min-width: 230px;
+.player-matched-cards, .computer-matched-cards {
+  min-width: 150px;
 }
 
-.computer-matched-cards {
-  min-width: 230px;
-}
 
 .matched-card-pair {
   height: 20px;
+}
+
+.computer-difficulty {
+    margin-left: 8px;
 }
