@@ -5,9 +5,11 @@ var computer = new Player('computer');
  * @type {Array}
  */
 computer.knownCards = [];
+
 for (var i = 0; i < 14; i++) {
   computer.knownCards.push([])
 }
+
 computer.addKnownCard = function(card) {
   if (computer.knownCards[card.getRawNumber()].indexOf(card) === -1) {
     computer.knownCards[card.getRawNumber()].push(card);
@@ -93,8 +95,6 @@ computer.makeMoves = function() {
     $(firstCard.getElement()).click();
 
     setTimeout(function() {
-      var secondChosenCardIndex;
-
       // Remove first card we chose so we don't choose it again
       if (unmatchedCards.length > 2) {
       unmatchedCards.splice(firstChosenCardIndex, 1);
@@ -110,7 +110,7 @@ computer.makeMoves = function() {
         }
       }
       
-      secondChosenCardIndex = secondMatchableCardIndex !== undefined ? secondMatchableCardIndex :Math.floor(Math.random() * (unmatchedCards.length - 1));
+      var secondChosenCardIndex = secondMatchableCardIndex !== undefined ? secondMatchableCardIndex :Math.floor(Math.random() * (unmatchedCards.length - 1));
       var secondCardLocation = cards.indexOf(unmatchedCards[secondChosenCardIndex]);
       var secondCard = cards[secondCardLocation];
 
