@@ -15,6 +15,7 @@ $('.cards').css("width", Card.width*13);
 $(document).ready(function() {
   // Flip all the cards initially to preload all the images
   cards.forEach(function(card) {
+    card.redraw();
     card.flipped = !card.flipped;
     card.redraw();
   });
